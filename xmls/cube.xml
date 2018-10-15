@@ -1,0 +1,7 @@
+<mujoco>
+    <body name="cube_0">
+        <geom>
+            name="cube_0" class="cube" pos="0 0 0"
+        </geom>
+    </body>
+</mujoco>
