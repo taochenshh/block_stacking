@@ -1,7 +1,6 @@
 <mujoco>
-    <body name="cube_0">
-        <geom>
-            name="cube_0" class="cube" pos="0 0 0"
-        </geom>
+    <body name="cube_0" pos="0 0 0.8">
+        <geom name="cube_0" class="cube" pos="0 0 0.2"/>
+        <joint name="cube_0" class="cube"/>
     </body>
 </mujoco>
