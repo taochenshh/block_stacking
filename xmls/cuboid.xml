@@ -1,0 +1,122 @@
+<mujoco>
+    <body name="cuboid_0" pos="10.0 11.0 0.02">
+        <geom name="cuboid_0" class="cuboid" pos="10.0 11.0 0.02"/>
+        <joint name="cuboid_0" class="cuboid"/>
+    </body>
+    <body name="cuboid_1" pos="10.2 11.0 0.02">
+        <geom name="cuboid_1" class="cuboid" pos="10.2 11.0 0.02"/>
+        <joint name="cuboid_1" class="cuboid"/>
+    </body>
+    <body name="cuboid_2" pos="10.4 11.0 0.02">
+        <geom name="cuboid_2" class="cuboid" pos="10.4 11.0 0.02"/>
+        <joint name="cuboid_2" class="cuboid"/>
+    </body>
+    <body name="cuboid_3" pos="10.6 11.0 0.02">
+        <geom name="cuboid_3" class="cuboid" pos="10.6 11.0 0.02"/>
+        <joint name="cuboid_3" class="cuboid"/>
+    </body>
+    <body name="cuboid_4" pos="10.8 11.0 0.02">
+        <geom name="cuboid_4" class="cuboid" pos="10.8 11.0 0.02"/>
+        <joint name="cuboid_4" class="cuboid"/>
+    </body>
+    <body name="cuboid_5" pos="11 11.0 0.02">
+        <geom name="cuboid_5" class="cuboid" pos="11 11.0 0.02"/>
+        <joint name="cuboid_5" class="cuboid"/>
+    </body>
+    <body name="cuboid_6" pos="11.2 11.0 0.02">
+        <geom name="cuboid_6" class="cuboid" pos="11.2 11.0 0.02"/>
+        <joint name="cuboid_6" class="cuboid"/>
+    </body>
+    <body name="cuboid_7" pos="11.4 11.0 0.02">
+        <geom name="cuboid_7" class="cuboid" pos="11.4 11.0 0.02"/>
+        <joint name="cuboid_7" class="cuboid"/>
+    </body>
+    <body name="cuboid_8" pos="11.6 11.0 0.02">
+        <geom name="cuboid_8" class="cuboid" pos="11.6 11.0 0.02"/>
+        <joint name="cuboid_8" class="cuboid"/>
+    </body>
+    <body name="cuboid_9" pos="11.8 11.0 0.02">
+        <geom name="cuboid_9" class="cuboid" pos="11.8 11.0 0.02"/>
+        <joint name="cuboid_9" class="cuboid"/>
+    </body>
+    <body name="cuboid_10" pos="12.0 11.0 0.02">
+        <geom name="cuboid_10" class="cuboid" pos="12. 11.0 0.02"/>
+        <joint name="cuboid_10" class="cuboid"/>
+    </body>
+    <body name="cuboid_11" pos="12.2 11.0 0.02">
+        <geom name="cuboid_11" class="cuboid" pos="12.2 11.0 0.02"/>
+        <joint name="cuboid_11" class="cuboid"/>
+    </body>
+    <body name="cuboid_12" pos="12.4 11.0 0.02">
+        <geom name="cuboid_12" class="cuboid" pos="12.4 11.0 0.02"/>
+        <joint name="cuboid_12" class="cuboid"/>
+    </body>
+    <body name="cuboid_13" pos="12.6 11.0 0.02">
+        <geom name="cuboid_13" class="cuboid" pos="12.6 11.0 0.02"/>
+        <joint name="cuboid_13" class="cuboid"/>
+    </body>
+    <body name="cuboid_14" pos="12.8 11.0 0.02">
+        <geom name="cuboid_14" class="cuboid" pos="12.8 11.0 0.02"/>
+        <joint name="cuboid_14" class="cuboid"/>
+    </body>
+    <body name="cuboid_15" pos="10.0 11.04 0.02">
+        <geom name="cuboid_15" class="cuboid" pos="10.0 11.04 0.02"/>
+        <joint name="cuboid_15" class="cuboid"/>
+    </body>
+    <body name="cuboid_16" pos="10.2 11.04 0.02">
+        <geom name="cuboid_16" class="cuboid" pos="10.2 11.04 0.02"/>
+        <joint name="cuboid_16" class="cuboid"/>
+    </body>
+    <body name="cuboid_17" pos="10.4 11.04 0.02">
+        <geom name="cuboid_17" class="cuboid" pos="10.4 11.04 0.02"/>
+        <joint name="cuboid_17" class="cuboid"/>
+    </body>
+    <body name="cuboid_18" pos="10.6 11.04 0.02">
+        <geom name="cuboid_18" class="cuboid" pos="10.6 11.04 0.02"/>
+        <joint name="cuboid_18" class="cuboid"/>
+    </body>
+    <body name="cuboid_19" pos="10.8 11.04 0.02">
+        <geom name="cuboid_19" class="cuboid" pos="10.8 11.04 0.02"/>
+        <joint name="cuboid_19" class="cuboid"/>
+    </body>
+    <body name="cuboid_20" pos="11.0 11.04 0.02">
+        <geom name="cuboid_20" class="cuboid" pos="11.0 11.04 0.02"/>
+        <joint name="cuboid_20" class="cuboid"/>
+    </body>
+    <body name="cuboid_21" pos="11.2 11.04 0.02">
+        <geom name="cuboid_21" class="cuboid" pos="11.2 11.04 0.02"/>
+        <joint name="cuboid_21" class="cuboid"/>
+    </body>
+    <body name="cuboid_22" pos="11.4 11.04 0.02">
+        <geom name="cuboid_22" class="cuboid" pos="11.4 11.04 0.02"/>
+        <joint name="cuboid_22" class="cuboid"/>
+    </body>
+    <body name="cuboid_23" pos="11.6 11.04 0.02">
+        <geom name="cuboid_23" class="cuboid" pos="11.6 11.04 0.02"/>
+        <joint name="cuboid_23" class="cuboid"/>
+    </body>
+    <body name="cuboid_24" pos="11.8 11.04 0.02">
+        <geom name="cuboid_24" class="cuboid" pos="11.8 11.04 0.02"/>
+        <joint name="cuboid_24" class="cuboid"/>
+    </body>
+    <body name="cuboid_25" pos="12.0 11.04 0.02">
+        <geom name="cuboid_25" class="cuboid" pos="12.0 11.04 0.02"/>
+        <joint name="cuboid_25" class="cuboid"/>
+    </body>
+    <body name="cuboid_26" pos="12.2 11.04 0.02">
+        <geom name="cuboid_26" class="cuboid" pos="12.2 11.04 0.02"/>
+        <joint name="cuboid_26" class="cuboid"/>
+    </body>
+    <body name="cuboid_27" pos="12.4 11.04 0.02">
+        <geom name="cuboid_27" class="cuboid" pos="12.4 11.04 0.02"/>
+        <joint name="cuboid_27" class="cuboid"/>
+    </body>
+    <body name="cuboid_28" pos="12.6 11.04 0.02">
+        <geom name="cuboid_28" class="cuboid" pos="12.6 11.04 0.02"/>
+        <joint name="cuboid_28" class="cuboid"/>
+    </body>
+    <body name="cuboid_29" pos="12.8 11.04 0.02">
+        <geom name="cuboid_29" class="cuboid" pos="12.8 11.04 0.02"/>
+        <joint name="cuboid_29" class="cuboid"/>
+    </body>
+</mujoco>
