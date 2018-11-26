@@ -1,122 +1,122 @@
 <mujoco>
     <body name="cube_0" pos="10 10 0.02">
-        <geom name="cube_0" class="cube" pos="10 10 0.02"/>
+        <geom name="cube_0" class="cube" material="cube_0_mat" pos="10 10 0.02"/>
         <joint name="cube_0" class="cube"/>
     </body>
     <body name="cube_1" pos="10.04 10.0 0.02">
-        <geom name="cube_1" class="cube" pos="10.04 10.0 0.02"/>
+        <geom name="cube_1" class="cube" material="cube_1_mat" pos="10.04 10.0 0.02"/>
         <joint name="cube_1" class="cube"/>
     </body>
     <body name="cube_2" pos="10.08 10.0 0.02">
-        <geom name="cube_2" class="cube" pos="10.08 10.0 0.02"/>
+        <geom name="cube_2" class="cube" material="cube_2_mat" pos="10.08 10.0 0.02"/>
         <joint name="cube_2" class="cube"/>
     </body>
     <body name="cube_3" pos="10.12 10.0 0.02">
-        <geom name="cube_3" class="cube" pos="10.12 10.0 0.02"/>
+        <geom name="cube_3" class="cube" material="cube_3_mat" pos="10.12 10.0 0.02"/>
         <joint name="cube_3" class="cube"/>
     </body>
     <body name="cube_4" pos="10.16 10.0 0.02">
-        <geom name="cube_4" class="cube" pos="10.16 10.0 0.02"/>
+        <geom name="cube_4" class="cube" material="cube_4_mat" pos="10.16 10.0 0.02"/>
         <joint name="cube_4" class="cube"/>
     </body>
     <body name="cube_5" pos="10.20 10.0 0.02">
-        <geom name="cube_5" class="cube" pos="10.20 10.0 0.02"/>
+        <geom name="cube_5" class="cube" material="cube_5_mat" pos="10.20 10.0 0.02"/>
         <joint name="cube_5" class="cube"/>
     </body>
     <body name="cube_6" pos="10.24 10.0 0.02">
-        <geom name="cube_6" class="cube" pos="10.24 10.0 0.02"/>
+        <geom name="cube_6" class="cube" material="cube_6_mat" pos="10.24 10.0 0.02"/>
         <joint name="cube_6" class="cube"/>
     </body>
     <body name="cube_7" pos="10.28 10.0 0.02">
-        <geom name="cube_7" class="cube" pos="10.28 10.0 0.02"/>
+        <geom name="cube_7" class="cube" material="cube_7_mat" pos="10.28 10.0 0.02"/>
         <joint name="cube_7" class="cube"/>
     </body>
     <body name="cube_8" pos="10.32 10.0 0.02">
-        <geom name="cube_8" class="cube" pos="10.32 10.0 0.02"/>
+        <geom name="cube_8" class="cube" material="cube_8_mat" pos="10.32 10.0 0.02"/>
         <joint name="cube_8" class="cube"/>
     </body>
     <body name="cube_9" pos="10.36 10.0 0.02">
-        <geom name="cube_9" class="cube" pos="10.36 10.0 0.02"/>
+        <geom name="cube_9" class="cube" material="cube_9_mat" pos="10.36 10.0 0.02"/>
         <joint name="cube_9" class="cube"/>
     </body>
     <body name="cube_10" pos="10.40 10.0 0.02">
-        <geom name="cube_10" class="cube" pos="10.40 10.0 0.02"/>
+        <geom name="cube_10" class="cube" material="cube_10_mat" pos="10.40 10.0 0.02"/>
         <joint name="cube_10" class="cube"/>
     </body>
     <body name="cube_11" pos="10.44 10.0 0.02">
-        <geom name="cube_11" class="cube" pos="10.44 10.0 0.02"/>
+        <geom name="cube_11" class="cube" material="cube_11_mat" pos="10.44 10.0 0.02"/>
         <joint name="cube_11" class="cube"/>
     </body>
     <body name="cube_12" pos="10.48 10.0 0.02">
-        <geom name="cube_12" class="cube" pos="10.48 10.0 0.02"/>
+        <geom name="cube_12" class="cube" material="cube_12_mat" pos="10.48 10.0 0.02"/>
         <joint name="cube_12" class="cube"/>
     </body>
     <body name="cube_13" pos="10.52 10.0 0.02">
-        <geom name="cube_13" class="cube" pos="10.52 10.0 0.02"/>
+        <geom name="cube_13" class="cube" material="cube_13_mat" pos="10.52 10.0 0.02"/>
         <joint name="cube_13" class="cube"/>
     </body>
     <body name="cube_14" pos="10.56 10.0 0.02">
-        <geom name="cube_14" class="cube" pos="10.56 10.0 0.02"/>
+        <geom name="cube_14" class="cube" material="cube_14_mat" pos="10.56 10.0 0.02"/>
         <joint name="cube_14" class="cube"/>
     </body>
     <body name="cube_15" pos="10 10.04 0.02">
-        <geom name="cube_15" class="cube" pos="10 10.04 0.02"/>
+        <geom name="cube_15" class="cube" material="cube_15_mat" pos="10 10.04 0.02"/>
         <joint name="cube_15" class="cube"/>
     </body>
     <body name="cube_16" pos="10.04 10.04 0.02">
-        <geom name="cube_16" class="cube" pos="10.04 10.04 0.02"/>
+        <geom name="cube_16" class="cube" material="cube_16_mat" pos="10.04 10.04 0.02"/>
         <joint name="cube_16" class="cube"/>
     </body>
     <body name="cube_17" pos="10.08 10.04 0.02">
-        <geom name="cube_17" class="cube" pos="10.08 10.04 0.02"/>
+        <geom name="cube_17" class="cube" material="cube_17_mat" pos="10.08 10.04 0.02"/>
         <joint name="cube_17" class="cube"/>
     </body>
     <body name="cube_18" pos="10.12 10.04 0.02">
-        <geom name="cube_18" class="cube" pos="10.12 10.04 0.02"/>
+        <geom name="cube_18" class="cube" material="cube_18_mat" pos="10.12 10.04 0.02"/>
         <joint name="cube_18" class="cube"/>
     </body>
     <body name="cube_19" pos="10.16 10.04 0.02">
-        <geom name="cube_19" class="cube" pos="10.16 10.04 0.02"/>
+        <geom name="cube_19" class="cube" material="cube_19_mat" pos="10.16 10.04 0.02"/>
         <joint name="cube_19" class="cube"/>
     </body>
     <body name="cube_20" pos="10.20 10.04 0.02">
-        <geom name="cube_20" class="cube" pos="10.20 10.04 0.02"/>
+        <geom name="cube_20" class="cube" material="cube_20_mat" pos="10.20 10.04 0.02"/>
         <joint name="cube_20" class="cube"/>
     </body>
     <body name="cube_21" pos="10.24 10.04 0.02">
-        <geom name="cube_21" class="cube" pos="10.24 10.04 0.02"/>
+        <geom name="cube_21" class="cube" material="cube_21_mat" pos="10.24 10.04 0.02"/>
         <joint name="cube_21" class="cube"/>
     </body>
     <body name="cube_22" pos="10.28 10.04 0.02">
-        <geom name="cube_22" class="cube" pos="10.28 10.04 0.02"/>
+        <geom name="cube_22" class="cube" material="cube_22_mat" pos="10.28 10.04 0.02"/>
         <joint name="cube_22" class="cube"/>
     </body>
     <body name="cube_23" pos="10.32 10.04 0.02">
-        <geom name="cube_23" class="cube" pos="10.32 10.04 0.02"/>
+        <geom name="cube_23" class="cube" material="cube_23_mat" pos="10.32 10.04 0.02"/>
         <joint name="cube_23" class="cube"/>
     </body>
     <body name="cube_24" pos="10.36 10.04 0.02">
-        <geom name="cube_24" class="cube" pos="10.36 10.04 0.02"/>
+        <geom name="cube_24" class="cube" material="cube_24_mat" pos="10.36 10.04 0.02"/>
         <joint name="cube_24" class="cube"/>
     </body>
     <body name="cube_25" pos="10.40 10.04 0.02">
-        <geom name="cube_25" class="cube" pos="10.40 10.04 0.02"/>
+        <geom name="cube_25" class="cube" material="cube_25_mat" pos="10.40 10.04 0.02"/>
         <joint name="cube_25" class="cube"/>
     </body>
     <body name="cube_26" pos="10.44 10.04 0.02">
-        <geom name="cube_26" class="cube" pos="10.44 10.04 0.02"/>
+        <geom name="cube_26" class="cube" material="cube_26_mat" pos="10.44 10.04 0.02"/>
         <joint name="cube_26" class="cube"/>
     </body>
     <body name="cube_27" pos="10.48 10.04 0.02">
-        <geom name="cube_27" class="cube" pos="10.48 10.04 0.02"/>
+        <geom name="cube_27" class="cube" material="cube_27_mat" pos="10.48 10.04 0.02"/>
         <joint name="cube_27" class="cube"/>
     </body>
     <body name="cube_28" pos="10.52 10.04 0.02">
-        <geom name="cube_28" class="cube" pos="10.52 10.04 0.02"/>
+        <geom name="cube_28" class="cube" material="cube_28_mat" pos="10.52 10.04 0.02"/>
         <joint name="cube_28" class="cube"/>
     </body>
     <body name="cube_29" pos="10.56 10.04 0.02">
-        <geom name="cube_29" class="cube" pos="10.56 10.04 0.02"/>
+        <geom name="cube_29" class="cube" material="cube_29_mat" pos="10.56 10.04 0.02"/>
         <joint name="cube_29" class="cube"/>
     </body>
 </mujoco>
