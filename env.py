@@ -109,14 +109,57 @@ class BlockWordEnv:
         if render:
             self.render()
 
-
+    def gen_constrained_ran_bk_configs(self, render=False):
+        # prob = np.exp(-0.1 * np.arange(30))
+        cuboid_num = np.random.choice(5, 1)[0]
+        cube_num = np.random.choice(20, 1)[0]
+        print('Selected cube num:', cube_num)
+        print('Selected cuboid num:', cuboid_num)
+        total_num = cuboid_num + cube_num
+        blocks = [0] * cube_num + [1] * cuboid_num
+        permuted_blocks = np.random.permutation(blocks)
+        cur_x = self.center_bounds[0]
+        layer_num = 1
+        layer_pos_candidates = self.pos_candidates.copy()
+        filled_segs = []
+        for i in range(total_num):
+            bk = permuted_blocks[i]
+            bk_type = 'cube' if bk == 0 else 'cuboid'
+            bk_size = self.cube_size if bk == 0 else self.cuboid_size
+            z = (2 * layer_num - 1) * self.cube_size[2]
+            y = 0
+            bk_lower_limit = cur_x + bk_size[0]
+            pos_candidates = layer_pos_candidates[layer_pos_candidates >= bk_lower_limit]
+            if pos_candidates.size < 1:
+                layer_num += 1
+                cur_x = self.center_bounds[0]
+                layer_pos_candidates = self.pos_candidates.copy()
+                good_ids = np.zeros_like(layer_pos_candidates, dtype=bool)
+                for seg in filled_segs:
+                    good_ids = np.logical_or(good_ids, np.logical_and(layer_pos_candidates >= seg[0],
+                                                                      layer_pos_candidates <= seg[1]))
+                layer_pos_candidates = layer_pos_candidates[good_ids]
+                print('Layer [{0:d}] pos candidates num: {1:d}'.format(layer_num, layer_pos_candidates.size))
+                if layer_pos_candidates.size < 1:
+                    break
+                filled_segs = []
+                continue
+            else:
+                x = np.random.choice(pos_candidates, 1)[0]
+                cur_x = x + bk_size[0]
+                target_pos = np.array([x, y, z])
+                self.move_block(target_pos, bk_type=bk_type)
+                filled_segs.append([x - bk_size[0], cur_x])
+        self.sim.forward()
+        if render:
+            self.render()
 
 def main():
     env_file = './xmls/block_world.xml'
     BKWorld = BlockWordEnv(env_file=env_file, debug=True, random_color=True)
     BKWorld.reset()
     BKWorld.render()
-    BKWorld.gen_ran_bk_configs(render=True)
+    BKWorld.gen_constrained_ran_bk_configs(render=True)
     while True:
         # BKWorld.reset()
         # BKWorld.gen_ran_bk_configs(render=True)
