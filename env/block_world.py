@@ -146,8 +146,11 @@ class BlockWordEnv:
 
     def gen_ran_bk_configs(self, render=False):
         # prob = np.exp(-0.1 * np.arange(30))
-        cuboid_num = np.random.choice(5, 1)[0]
-        cube_num = np.random.choice(15, 1)[0]
+        while True:
+            cuboid_num = np.random.choice(5, 1)[0]
+            cube_num = np.random.choice(15, 1)[0]
+            if cuboid_num > 0 or cube_num > 0:
+                break
         total_num = cuboid_num + cube_num
         blocks = [0] * cube_num + [1] * cuboid_num
         permuted_blocks = np.random.permutation(blocks)
@@ -176,8 +179,11 @@ class BlockWordEnv:
 
     def gen_constrained_ran_bk_configs(self, render=False):
         # prob = np.exp(-0.1 * np.arange(30))
-        cuboid_num = np.random.choice(5, 1)[0]
-        cube_num = np.random.choice(15, 1)[0]
+        while True:
+            cuboid_num = np.random.choice(5, 1)[0]
+            cube_num = np.random.choice(15, 1)[0]
+            if cuboid_num > 0 or cube_num > 0:
+                break
         if self.debug:
             print('Selected cube num:', cube_num)
             print('Selected cuboid num:', cuboid_num)
