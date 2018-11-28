@@ -101,11 +101,12 @@ venv.bak/
 /site
 
 # mypy
-.mypy_cache/
-.idea/inspectionProfiles/
-.idea/
-.png
-.jpg
-.pickle
-.json
-
+*.mypy_cache/
+*.idea/inspectionProfiles/
+*.idea/
+*.png
+*.jpg
+*.pickle
+*.json
+*.txt
+data/*
