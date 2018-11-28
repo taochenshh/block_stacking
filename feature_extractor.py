@@ -69,12 +69,12 @@ def main():
     image_labels = []
     for i_batch, (rgbs, labels) in enumerate(tqdm(dataloader)):
         batch_rgbs = rgbs.float().to(device)
-        batch_features = model(batch_rgbs)
+        batch_features = torch.squeeze(model(batch_rgbs))
         image_features.append(batch_features.detach().cpu().numpy())
         image_labels.append(labels.detach().cpu().numpy())
     image_features = np.concatenate(image_features, axis=0)
     image_labels = np.concatenate(image_labels, axis=0)
-    np.savez('features.npy', features=image_features, labels=image_labels)
+    np.savez('features.npz', features=image_features, labels=image_labels)
 
 if __name__ == '__main__':
     main()

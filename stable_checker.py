@@ -86,12 +86,14 @@ def main():
     parser.add_argument('--batch-size', type=int, default=64, metavar='N',
                         help='input batch size for training (default: 64)')
     parser.add_argument('--test', action='store_true', help='test the model with test data')
-    parser.add_argument('--test-batch-size', type=int, default=200, metavar='N',
+    parser.add_argument('--test-batch-size', type=int, default=128, metavar='N',
                         help='input batch size for testing (default: 1000)')
-    parser.add_argument('--epochs', type=int, default=30, metavar='N',
+    parser.add_argument('--epochs', type=int, default=15, metavar='N',
                         help='number of epochs to train (default: 10)')
-    parser.add_argument('--lr', type=float, default=0.0005, metavar='LR',
+    parser.add_argument('--lr', type=float, default=0.0001, metavar='LR',
                         help='learning rate (default: 0.01)')
+    parser.add_argument('--weight_decay', type=float, default=0.01,
+                        help='weight decay')
     parser.add_argument('--no-cuda', action='store_true', default=False,
                         help='disables CUDA training')
     parser.add_argument('--seed', type=int, default=1, metavar='S',
@@ -100,7 +102,7 @@ def main():
                         help='logging training status every n iterations')
     parser.add_argument('--save_interval', type=int, default=5,
                         help='save model every n epochs')
-    parser.add_argument('--save_dir', type=int, default=50,
+    parser.add_argument('--save_dir', type=str, default='./data',
                         help='dir to save model and log')
     args = parser.parse_args()
     use_cuda = not args.no_cuda and torch.cuda.is_available()
@@ -145,6 +147,7 @@ def main():
 
     log_dir = os.path.join(args.save_dir, 'logs')
     model_dir = os.path.join(args.save_dir, 'model')
+    os.makedirs(model_dir, exist_ok=True)
     if not args.test:
         logger.configure(dir=log_dir, format_strs=['tensorboard', 'stdout'])
 
@@ -160,7 +163,7 @@ def main():
         print('Test accuracy:', test_acc)
         print('Test loss:', test_loss)
     else:
-        optimizer = optim.Adam(model.parameters(), lr=args.lr)
+        optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
         best_acc = -np.inf
         for epoch in range(1, args.epochs + 1):
             train_loss, train_acc = train(args, model, device, train_loader, optimizer, epoch)
@@ -175,3 +178,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    # test accuracy: 0.99369
