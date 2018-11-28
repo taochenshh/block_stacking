@@ -30,6 +30,7 @@ def main():
             with open(os.path.join(save_folder, 'label.json'), 'w') as f:
                 json.dump(bool(stable), f, indent=2)
             folder_idx += 1
+        del BKWorld
 
 
 if __name__ == '__main__':
