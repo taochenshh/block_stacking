@@ -39,7 +39,7 @@ def train(args, model, device, train_loader, optimizer, epoch):
     logger.dumpkvs()
     return total_loss, acc
 
-def test(args, model, device, test_loader, epoch=None, val=True):
+def test(model, device, test_loader, epoch=None, val=True):
     model.eval()
     test_loss = 0
     correct = 0
@@ -159,7 +159,7 @@ def main():
     if args.test:
         print('loading checkpoint...')
         load_model(model_dir, model)
-        test_loss, test_acc = test(args, model, device, test_loader, val=False)
+        test_loss, test_acc = test(model, device, test_loader, val=False)
         print('Test accuracy:', test_acc)
         print('Test loss:', test_loss)
     else:
@@ -167,7 +167,7 @@ def main():
         best_acc = -np.inf
         for epoch in range(1, args.epochs + 1):
             train_loss, train_acc = train(args, model, device, train_loader, optimizer, epoch)
-            test_loss, test_acc = test(args, model, device, val_loader, epoch, val=True)
+            test_loss, test_acc = test(model, device, val_loader, epoch, val=True)
             if epoch % args.save_interval == 0:
                 is_best = False
                 if test_acc > best_acc:

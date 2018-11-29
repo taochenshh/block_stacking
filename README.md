@@ -12,3 +12,7 @@
 1. `pip install -r requirements.txt`
 1. `python setup.py install`
 1. `python examples/body_interaction.py`
+
+## Note
+If you wanna use `viewer.render`, you need to set `LD_PRELOAD` to `/usr/lib/x86_64-linux-gnu/libGLEW.so:/usr/lib/nvidia-384/libGL.so`.
+However, if you wanna use `sim.render`, you need to unset it (`unset LD_PRELOAD`).

@@ -107,6 +107,17 @@ class BlockWordEnv:
         self.viewer.cam.distance = 2
         self.viewer.cam.elevation = -20
 
+    def move_given_block(self, name, target_pos):
+        prev_pose = self.sim.data.get_joint_qpos(name)
+        # if self.debug:
+        #     print('{0:s}_{1:d} pose before moving:'.format(bk_type, self.cur_id[bk_type]), prev_pose)
+        post_pose = prev_pose.copy()
+        post_pose[:3] = target_pos
+        self.sim.data.set_joint_qpos(name, post_pose)
+        self.active_blocks.append(name)
+        if self.debug:
+            print('{0:s} pose after moving:'.format(name), post_pose)
+
     def move_block(self, target_pos, bk_type='cube'):
         # center bounds: [0, 0.1 * 30]
         assert bk_type == 'cube' or bk_type == 'cuboid'
@@ -128,6 +139,7 @@ class BlockWordEnv:
         img = np.flipud(img)
         img = img[:, :, ::-1]
         resized_img = cv2.resize(img[0:500, 50:550], (224, 224), cv2.INTER_AREA)
+        # resized_img = cv2.resize(img, (224, 224), cv2.INTER_AREA)
         # cv2.imwrite('test_cut.png', img[0:500, 50:550])
         # cv2.imwrite('test.png', img)
         # cv2.imwrite('test_resize.png', resized_img)
