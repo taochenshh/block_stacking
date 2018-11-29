@@ -118,6 +118,10 @@ class BlockWordEnv:
         if self.debug:
             print('{0:s} pose after moving:'.format(name), post_pose)
 
+    def move_given_blocks(self, block_dict):
+        for bk_name, pos in block_dict.items():
+            self.move_given_block(bk_name, pos)
+
     def move_block(self, target_pos, bk_type='cube'):
         # center bounds: [0, 0.1 * 30]
         assert bk_type == 'cube' or bk_type == 'cuboid'

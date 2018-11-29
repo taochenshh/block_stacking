@@ -25,8 +25,7 @@ def main():
     test_num = 100
     for i in range(test_num):
         BKWorld.reset()
-        for bk_name, pos in test_configs[test_id].items():
-            BKWorld.move_given_block(bk_name, pos)
+        BKWorld.move_given_blocks(test_configs[test_id])
         BKWorld.step()
         img = BKWorld.get_img()
         label = BKWorld.check_stability(render=False)
