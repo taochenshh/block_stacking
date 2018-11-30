@@ -2,11 +2,12 @@ from representations import *
 import matplotlib.pyplot as plt
 import time
 
+# shape : half
 block_D = Block([5,2,1], 'BLOCK_D')
 block_A = Block([2,2,2], 'BLOCK_A')
 block_B = Block([2,2,2], 'BLOCK_B')
 block_C = Block([2,2,2], 'BLOCK_C')
-table = Table([100,100], 'TABLE')
+table = Table([100,100,0], 'TABLE')
 block_E = Block([2,2,2], 'BLOCK_E')
 block_H = Block([2,2,5], 'BLOCK_H')
 
@@ -31,6 +32,7 @@ SG_start.attach_node(block_D, table, {'position': [0, 0]})
 SG_start.attach_node(block_B, block_D, {'position': [-1.5, 0]})
 SG_start.attach_node(block_A, block_D, {'position': [1.5, 0]})
 SG_start.attach_node(block_E, block_D, {'position': [0, 0]})
+print(SG_start.ConfigList())
 
 SG_goal = StateGraph(table)
 '''
@@ -99,6 +101,7 @@ for act in actions:
     print('Step', step, ':')
     step = step - 1
     act.show()
+    print(act.configMove())
 #print(actions)
 #print(path)
 print(len(searchGraph.nodes()))
