@@ -112,3 +112,4 @@ venv.bak/
 data/*
 data*/*
 *.npz
+*.TXT
