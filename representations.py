@@ -42,7 +42,8 @@ class StateGraph:
         self.graph.remove_node(node)
 
     def ConfigList(self):
-        Clist = {x.name: self.graph.nodes[x]['abs_position'] for x in list(self.graph.nodes())}
+        Clist = {x.name: self.graph.nodes[x]['abs_position'] for x in list(self.graph.nodes())
+                 if self.graph.nodes[x]['layer'] != 0}
         return Clist
 
     def ifStable(self):
@@ -59,7 +60,7 @@ class StateGraph:
         return False
 
     def copy(self):
-        CSG = StateGraph(self.root_node)
+        CSG = StateGraph(self.root_node, SC=self.SC, BKWorld=self.BKWorld)
         CSG.graph = nx.DiGraph(self.graph)
         CSG.layers = [x[:] for x in self.layers]
         return CSG

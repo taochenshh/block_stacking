@@ -1,6 +1,7 @@
 from representations import *
 import matplotlib.pyplot as plt
 import time
+import json
 
 SC = StabilityChecker(model_dir='./data/model')
 BKWorld = BlockWordEnv(env_file='./xmls/block_world.xml',
@@ -22,7 +23,7 @@ SG_start = StateGraph(table, SC=SC, BKWorld=BKWorld)
 SG_start.attach_node(cuboid_0,table, {'position': [0,0]})
 SG_start.attach_node(cube_0, cuboid_0, {'position': [0,0]})
 SG_start.attach_node(cube_1, cube_0, {'position': [0,0]})
-SG_start.attach_node(cube_2, cuboid_1, {'position': [0,0]})
+SG_start.attach_node(cube_2, cube_1, {'position': [0,0]})
 '''
 SG_start.attach_node(block_E, table, {'position': [-40, -40]})
 SG_start.attach_node(block_C, block_E, {'position': [0, 0]})
@@ -107,12 +108,16 @@ start_time = time.time()
 actions, path, searchGraph = DFSearch(SG_start, SG_goal)
 print('Planning Time:', time.time() - start_time, 'sec')
 step = len(actions)
+exe_actions = []
 for act in actions:
     print('Step', step, ':')
     step = step - 1
     act.show()
     exe_action = act.configMove()
     BKWorld.move_given_blocks(exe_action)
+    exe_actions.append(exe_action)
+with open('action_seq.json', 'w') as f:
+    json.dump(exe_actions, f, indent=2)
 #print(actions)
 #print(path)
 print(len(searchGraph.nodes()))
