@@ -2,6 +2,12 @@ from representations import *
 import matplotlib.pyplot as plt
 import time
 
+SC = StabilityChecker(model_dir='./data/model')
+BKWorld = BlockWordEnv(env_file='./xmls/block_world.xml',
+                       debug=False,
+                       random_color=False,
+                       random_num=5)
+
 # shape : half
 block_D = Block([5,2,1], 'BLOCK_D')
 block_A = Block([2,2,2], 'BLOCK_A')
@@ -11,7 +17,7 @@ table = Table([100,100,0], 'TABLE')
 block_E = Block([2,2,2], 'BLOCK_E')
 block_H = Block([2,2,5], 'BLOCK_H')
 
-SG_start = StateGraph(table)
+SG_start = StateGraph(table, SC=SC, BKWorld=BKWorld)
 '''
 SG_start.attach_node(block_E, table, {'position': [-40, -40]})
 SG_start.attach_node(block_C, block_E, {'position': [0, 0]})
@@ -34,7 +40,7 @@ SG_start.attach_node(block_A, block_D, {'position': [1.5, 0]})
 SG_start.attach_node(block_E, block_D, {'position': [0, 0]})
 print(SG_start.ConfigList())
 
-SG_goal = StateGraph(table)
+SG_goal = StateGraph(table, SC=SC, BKWorld=BKWorld)
 '''
 SG_goal.attach_node(block_D, table, {'position': [20, 20]})
 SG_goal.attach_node(block_C, block_D, {'position': [0, 0]})
@@ -101,7 +107,8 @@ for act in actions:
     print('Step', step, ':')
     step = step - 1
     act.show()
-    print(act.configMove())
+    exe_action = act.configMove()
+    BKWorld.move_given_blocks(exe_action)
 #print(actions)
 #print(path)
 print(len(searchGraph.nodes()))

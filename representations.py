@@ -1,9 +1,12 @@
 import networkx as nx
 import copy
 import numpy as np
+from stability_checker import StabilityChecker
+from env.block_world import BlockWordEnv
+import cv2
 
 class StateGraph:
-    def __init__(self, root_node):
+    def __init__(self, root_node, SC, BKWorld):
         # root_nodes: root node at layer 0
         self.graph = nx.DiGraph()
         self.root_node = root_node
@@ -12,6 +15,8 @@ class StateGraph:
         self.layers.append([root_node])
         self.graph.nodes[root_node]['layer'] = 0
         self.graph.nodes[root_node]['abs_position'] = [0,0,0]
+        self.SC = SC
+        self.BKWorld = BKWorld
         #i = [x for x in range(len(c)) if 1 in c[x]]
 
     def manipulable_nodes(self):
@@ -37,12 +42,18 @@ class StateGraph:
         self.graph.remove_node(node)
 
     def ConfigList(self):
-        Clist = [[x.name,self.graph.nodes[x]['abs_position']] for x in list(self.graph.nodes())]
+        Clist = {x.name: self.graph.nodes[x]['abs_position'] for x in list(self.graph.nodes())}
         return Clist
 
     def ifStable(self):
         blockConfigurations = self.ConfigList()
-        return True
+        self.BKWorld.reset()
+        self.BKWorld.move_given_blocks(blockConfigurations)
+        self.BKWorld.step()
+        img = self.BKWorld.get_img()
+        cv2.imwrite('test.png', img)
+        label = self.BKWorld.check_stability(render=False)
+        return label
 
     def ifCollide(self):
         return False
@@ -144,7 +155,7 @@ class MoveTo(Action):
         print('Move block:', self.opt[0].name, 'to', self.opt[1].name, 'at position', self.opt[2])
 
     def configMove(self):
-        return [self.opt[0].name, self.pos_state_graph.graph.nodes[self.opt[0]]['abs_position']]
+        return {self.opt[0].name: self.pos_state_graph.graph.nodes[self.opt[0]]['abs_position']}
 
 class MoveSubTo(Action):
     # action options: (SubassemblyToMove, ObjectToPutOn, root_node postion(x,y,z,quaternions))
@@ -175,7 +186,7 @@ class MoveSubTo(Action):
         print('Move Subassembly:', nodes_name, 'to', self.opt[1].name, 'at position', self.opt[2])
 
     def configMove(self):
-        return [[node.name, self.pos_state_graph.graph.nodes[node]['abs_position']] for node in self.opt[0]]
+        return {node.name: self.pos_state_graph.graph.nodes[node]['abs_position'] for node in self.opt[0]}
 
 
 def ExactIdenticalSubgraph(SG1, SG2):
