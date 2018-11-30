@@ -11,7 +11,7 @@ def main():
     parser.add_argument("--env_file", help="environment file",
                         type=str, default="./xmls/block_world.xml")
     parser.add_argument("--save_dir", help="dir to save images",
-                        type=str, default="./data")
+                        type=str, default="../data")
     parser.add_argument("--max_cfgs", help="maximum number of configurations to generate",
                         type=int, default="100000")
     args = parser.parse_args()
@@ -27,6 +27,7 @@ def main():
             save_folder = os.path.join(args.save_dir, '{0:08d}'.format(folder_idx))
             os.makedirs(save_folder, exist_ok=True)
             cv2.imwrite(os.path.join(save_folder, 'img.png'), img)
+            # cv2.imwrite(os.path.join(save_folder, 'img_flip.png'), img[:, ::-1])
             with open(os.path.join(save_folder, 'label.json'), 'w') as f:
                 json.dump(bool(stable), f, indent=2)
             folder_idx += 1

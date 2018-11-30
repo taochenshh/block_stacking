@@ -25,7 +25,7 @@ class BlockWordEnv:
             print('total cube num:', self.cube_num)
             print('total cuboid num:', self.cuboid_num)
         self.max_num_per_type = max(self.cube_num, self.cuboid_num)
-        self.center_bounds = [-0.12, 0.12]#[0, self.cuboid_size[0] * self.max_num_per_type]
+        self.center_bounds = [-0.25, 0.25]#[0, self.cuboid_size[0] * self.max_num_per_type]
         self.pos_candidates = np.arange(self.center_bounds[0],
                                         self.center_bounds[1] + self.cube_size[0],
                                         self.cube_size[0])
@@ -229,6 +229,12 @@ class BlockWordEnv:
         # cv2.imwrite('test_resize.png', resized_img)
         # cv2.imwrite('test_resize_lr_flip.png', resized_img[:, ::-1, :])
         return resized_img
+
+    def get_img_demo(self):
+        img = self.sim.render(camera_name='camera', width=1200, height=700, depth=False)
+        img = np.flipud(img)
+        img = img[:, :, ::-1]
+        return img
 
     def build_tower(self):
         layer_num = 1
