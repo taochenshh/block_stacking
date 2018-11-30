@@ -122,6 +122,40 @@ class BlockWordEnv:
         for bk_name, pos in block_dict.items():
             self.move_given_block(bk_name, pos)
 
+    def move_block_for_demo(self, name, target_pos):
+        prev_pose = self.sim.data.get_joint_qpos(name)
+        if self.debug:
+            print('{0:s} pose before moving:'.format(name), prev_pose)
+        post_pose = prev_pose.copy()
+        planned_path = []
+        up_steps = 10
+        h_steps = 100
+        down_steps = 10
+        planned_path.append(prev_pose.copy())
+        for i in range(up_steps):
+            tmp_pose = planned_path[-1].copy()
+            tmp_pose[2] += (0.2 - prev_pose[2]) / float(up_steps)
+            planned_path.append(tmp_pose.copy())
+        for i in range(h_steps + 1):
+            tmp_pose = planned_path[-1].copy()
+            tmp_pose[0] = (target_pos[0] - prev_pose[0]) * i / h_steps + prev_pose[0]
+            tmp_pose[1] = (target_pos[1] - prev_pose[1]) * i / h_steps + prev_pose[1]
+            planned_path.append(tmp_pose.copy())
+        for i in range(down_steps):
+            tmp_pose = planned_path[-1].copy()
+            tmp_pose[2] -= (0.2 - target_pos[2]) / float(down_steps)
+            planned_path.append(tmp_pose.copy())
+        post_pose[:3] = target_pos
+        planned_path.append(post_pose.copy())
+        for pos in planned_path:
+            self.sim.data.set_joint_qpos(name, pos)
+            time.sleep(0.02)
+            self.sim.step()
+            self.render()
+        self.active_blocks.append(name)
+        if self.debug:
+            print('{0:s} pose after moving:'.format(name), post_pose)
+
     def move_block(self, target_pos, bk_type='cube'):
         # center bounds: [0, 0.1 * 30]
         assert bk_type == 'cube' or bk_type == 'cuboid'

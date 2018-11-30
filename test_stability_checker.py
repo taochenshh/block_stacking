@@ -20,7 +20,10 @@ def main():
                      'cube_3': [-0.08, 0, 0.10]}]
     test_id = 0
     SC = StabilityChecker(model_dir=args.model_dir)
-    BKWorld = BlockWordEnv(env_file=args.env_file, debug=False, random_color=False, random_num=5)
+    BKWorld = BlockWordEnv(env_file=args.env_file,
+                           debug=False,
+                           random_color=False,
+                           random_num=5)
     pred_right = []
     test_num = 100
     for i in range(test_num):
