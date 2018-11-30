@@ -14,7 +14,10 @@
 1. `python examples/body_interaction.py`
 
 ## Note
-* Download the pretrained model [here](https://drive.google.com/open?id=1xurmHxqXELoq_sVHizUQyOIYHhdica1U), [here for cpu version](https://drive.google.com/open?id=1ooULbK_KEsVeeMG3rksoV005rt07hmkM)
+* Download the pretrained model [here](https://drive.google.com/open?id=1xurmHxqXELoq_sVHizUQyOIYHhdica1U), 
+[here for cpu version](https://drive.google.com/open?id=1ooULbK_KEsVeeMG3rksoV005rt07hmkM),
+[here for larger range [-0.25, 0.25]](https://drive.google.com/open?id=1zr0nRnMM1W9QGT9xF5GrHUwG_xcdgHbX)
+
 
 * If you wanna use `viewer.render`, you need to set `LD_PRELOAD` to `/usr/lib/x86_64-linux-gnu/libGLEW.so:/usr/lib/nvidia-384/libGL.so`.
 However, if you wanna use `sim.render`, you need to unset it (`unset LD_PRELOAD`).

@@ -2,7 +2,7 @@ from env.block_world import BlockWordEnv
 import argparse
 import numpy as np
 import cv2
-
+import time
 
 def main():
     np.set_printoptions(precision=4, suppress=True)
@@ -25,10 +25,17 @@ def main():
     BKWorld.move_block_for_demo('cuboid_0', test_config['cuboid_0'])
     BKWorld.move_block_for_demo('cube_2', test_config['cube_2'])
     BKWorld.move_block_for_demo('cube_1', test_config['cube_1'])
+    BKWorld.render()
+    time.sleep(2)
+    test_config = {'cube_0': [0.3, -0.3, 0.02],
+                   'cuboid_0': [0.3, -0.3, 0.06],
+                   'cube_1': [0.3, -0.3, 0.14],
+                   'cube_2': [0.3, -0.3, 0.10],
+                   'cube_3': [0.22, -0.3, 0.10]}
+    BKWorld.move_blocks_for_demo(test_config)
     while True:
         BKWorld.step()
         BKWorld.render()
-
 
 if __name__ == '__main__':
     main()

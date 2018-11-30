@@ -17,7 +17,12 @@ def main():
                      'cuboid_0': [0., 0, 0.06],
                      'cube_1': [0.08, 0, 0.14],
                      'cube_2': [0.08, 0, 0.10],
-                     'cube_3': [-0.08, 0, 0.10]}]
+                     'cube_3': [-0.08, 0, 0.10]},
+                    {'cube_0': [-0.16, 0, 0.02],
+                     'cuboid_0': [-0.16, 0, 0.06],
+                     'cube_1': [-0.16, 0, 0.14],
+                     'cube_2': [-0.16, 0, 0.10],
+                     'cube_3': [-0.16, 0, 0.18]}]
     test_id = 0
     SC = StabilityChecker(model_dir=args.model_dir)
     BKWorld = BlockWordEnv(env_file=args.env_file,

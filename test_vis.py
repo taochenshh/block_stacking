@@ -1,5 +1,4 @@
 from representations import *
-import matplotlib.pyplot as plt
 import time
 import json
 
@@ -43,8 +42,11 @@ BKWorld.render()
 time.sleep(2)
 
 for exe_action in reversed(exe_actions):
-    for bk_name, pos in exe_action.items():
-        BKWorld.move_block_for_demo(bk_name, pos)
+    bk_names = list(exe_action.keys())
+    if len(bk_names) > 1:
+        BKWorld.move_blocks_for_demo(exe_action)
+    else:
+        BKWorld.move_block_for_demo(bk_names[0], exe_action[bk_names[0]])
 
 while True:
     BKWorld.render()

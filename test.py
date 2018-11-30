@@ -1,5 +1,4 @@
 from representations import *
-import matplotlib.pyplot as plt
 import time
 import json
 

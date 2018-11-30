@@ -73,9 +73,9 @@ def save_model(save_dir, model, epoch, is_best):
         shutil.copyfile(ckpt_file, os.path.join(save_dir, 'model_best.pth'))
 
 
-def load_model(save_dir, model):
+def load_model(save_dir, model, device):
     ckpt_file = os.path.join(save_dir, 'model_best.pth')
-    ckpt = torch.load(ckpt_file)
+    ckpt = torch.load(ckpt_file, map_location=device)
     model_dict = model.state_dict()
     pretrained_dict = {k: v for k, v in ckpt['state_dict'].items() if k in model_dict}
     model_dict.update(pretrained_dict)
@@ -88,7 +88,7 @@ def main():
     parser.add_argument('--test', action='store_true', help='test the model with test data')
     parser.add_argument('--test-batch-size', type=int, default=128, metavar='N',
                         help='input batch size for testing (default: 1000)')
-    parser.add_argument('--epochs', type=int, default=15, metavar='N',
+    parser.add_argument('--epochs', type=int, default=30, metavar='N',
                         help='number of epochs to train (default: 10)')
     parser.add_argument('--lr', type=float, default=0.0001, metavar='LR',
                         help='learning rate (default: 0.01)')
@@ -158,7 +158,7 @@ def main():
 
     if args.test:
         print('loading checkpoint...')
-        load_model(model_dir, model)
+        load_model(model_dir, model, device=device)
         test_loss, test_acc = test(model, device, test_loader, val=False)
         print('Test accuracy:', test_acc)
         print('Test loss:', test_loss)
@@ -178,4 +178,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    # test accuracy: 0.99369
+    # test accuracy: 0.9958

@@ -57,6 +57,8 @@ def main():
     leg = loss_ax.legend(loc='upper right')
     for legobj in leg.legendHandles:
         legobj.set_linewidth(3.0)
+    acc_fig.savefig('accuracy.png')
+    loss_fig.savefig('loss.png')
     acc_fig.savefig('accuracy.pdf', format='pdf')
     loss_fig.savefig('loss.pdf', format='pdf')
     plt.show()

@@ -23,6 +23,8 @@ def main():
         BKWorld = BlockWordEnv(env_file=args.env_file, debug=False, random_color=True, random_num=5)
         BKWorld.reset()
         imgs, stable = BKWorld.simulate_one_epoch()
+        if not stable:
+            continue
         for j, img in enumerate(imgs):
             save_folder = os.path.join(args.save_dir, '{0:08d}'.format(folder_idx))
             os.makedirs(save_folder, exist_ok=True)

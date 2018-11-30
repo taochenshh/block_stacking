@@ -68,6 +68,9 @@ class BlockWordEnv:
     def step(self):
         self.sim.step()
 
+    def forward(self):
+        self.sim.forward()
+
     def get_active_bk_states(self):
         bk_poses = []
         for bk_name in self.active_blocks:
@@ -128,9 +131,9 @@ class BlockWordEnv:
             print('{0:s} pose before moving:'.format(name), prev_pose)
         post_pose = prev_pose.copy()
         planned_path = []
-        up_steps = 10
-        h_steps = 100
-        down_steps = 10
+        up_steps = 20
+        h_steps = 30
+        down_steps = 20
         planned_path.append(prev_pose.copy())
         for i in range(up_steps):
             tmp_pose = planned_path[-1].copy()
@@ -150,15 +153,18 @@ class BlockWordEnv:
         for pos in planned_path:
             self.sim.data.set_joint_qpos(name, pos)
             time.sleep(0.02)
-            self.sim.step()
+            self.sim.forward()
             self.render()
         self.active_blocks.append(name)
         if self.debug:
             print('{0:s} pose after moving:'.format(name), post_pose)
 
     def move_blocks_for_demo(self, block_dict):
-        name = block_dict.keys()[0]
+        name = list(block_dict.keys())[0]
         target_pos = block_dict[name]
+        initial_poses = {}
+        for key in block_dict.keys():
+            initial_poses[key] = self.sim.data.get_joint_qpos(key)
         prev_pose = self.sim.data.get_joint_qpos(name)
         if self.debug:
             print('{0:s} pose before moving:'.format(name), prev_pose)
@@ -166,7 +172,7 @@ class BlockWordEnv:
         planned_delta_path = []
         planned_path = []
         up_steps = 10
-        h_steps = 100
+        h_steps = 20
         down_steps = 10
         planned_path.append(prev_pose.copy())
         planned_delta_path.append(np.zeros_like(prev_pose))
@@ -189,17 +195,17 @@ class BlockWordEnv:
         post_pose[:3] = target_pos
         planned_delta_path.append(post_pose - planned_path[-1])
         planned_path.append(post_pose.copy())
+
         for delta_pos in planned_delta_path:
             for bk_name, target_bk_pos in block_dict.items():
-                prev_pose = self.sim.data.get_joint_qpos(bk_name)
-                post_pose = prev_pose + delta_pos
-                self.sim.data.set_joint_qpos(bk_name, post_pose)
+                initial_poses[bk_name] = initial_poses[bk_name] + delta_pos
+                self.sim.data.set_joint_qpos(bk_name, initial_poses[bk_name])
             time.sleep(0.02)
-            self.sim.step()
+            self.sim.forward()
             self.render()
         self.active_blocks.append(name)
         if self.debug:
-            print('{0:s} pose after moving:'.format(name), post_pose)
+            print('{0:s} pose after moving:'.format(name), self.sim.data.get_joint_qpos(name))
 
 
     def move_block(self, target_pos, bk_type='cube'):
@@ -219,6 +225,7 @@ class BlockWordEnv:
         self.cur_id[bk_type] += 1
 
     def get_img(self):
+        # return self.get_img_demo()
         img = self.sim.render(camera_name='camera', width=600, height=600, depth=False)
         img = np.flipud(img)
         img = img[:, :, ::-1]
