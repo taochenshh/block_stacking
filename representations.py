@@ -265,6 +265,7 @@ def computeHeuristics(SG_cur, SG_goal):
 
     return len(Nodes_goal) + len(Nodes_cur) - 2*len(Nodes_ide) - len(Nodes_com )
     '''
+    
     CISub = ConfigIdenticalSubgraph(SG_cur, SG_goal)
 
     Nodes_ide = list(CISub.nodes())
@@ -284,7 +285,13 @@ def computeHeuristics(SG_cur, SG_goal):
 
     return len(Nodes_goal) + len(Nodes_cur) - 2*len(Nodes_ide) - len(Nodes_com) - len(Nodes_irrelevant)
 
+    '''
+    EISub = ExactIdenticalSubgraph(SG_cur, SG_goal)
+    return len(list(SG_goal.graph.nodes())) - len(list(EISub.nodes()))
+    '''
+
 def DFSearch(SG_start, SG_goal):
+
     searchGraph = nx.DiGraph()
 
     searchGraph.add_node(SG_start)
@@ -349,6 +356,7 @@ def DFSearch(SG_start, SG_goal):
                 cur_node = cur_successors[heus.index(min(heus))]
 
         else: # node expanded, find its unexpanded successors of lowest f = g + h
+            print('successor',len(list(searchGraph.successors(cur_node))))
             cur_successors = [x for x in list(searchGraph.successors(cur_node)) if not searchGraph.nodes[x]["Expanded"]]
 
             if len(cur_successors) == 0:
@@ -382,12 +390,20 @@ def expandActions(SG, SG_goal):
     CISub = ConfigIdenticalSubgraph(SG, SG_goal)
     # build actions
     movable_nodes = [x for x in SG.manipulable_nodes() if x not in list(CISub.nodes())]
-    for node in list(CISub.nodes()):
+    print('movables')
+    for node in movable_nodes:
+        print (node.name)
+    print('movables parents')
+    #for node in list(CISub.nodes()):
+    for node in list(SG.graph.nodes()):
+        print(node.name)
+        print('successor',list(SG_goal.graph.successors(node)))
         possible_nodes = [x for x in list(SG_goal.graph.successors(node)) if x in movable_nodes]
         if len(possible_nodes) == 0:
             continue
         for pnode in possible_nodes:
             cur_act = MoveTo([pnode, node, SG_goal.graph.edges[node, pnode]['position']], SG)
+            print('build action:')
             cur_act.show()
             if cur_act.ifeligible():
                 actions.append(cur_act)
@@ -397,6 +413,7 @@ def expandActions(SG, SG_goal):
     for node in SG.manipulable_nodes():
         random_position = [-0.25,0] # TODO randomly find a space on the table
         cur_act = MoveTo([node, SG.root_node, random_position], SG)
+        print('reset action:')
         cur_act.show()
         if cur_act.ifeligible():
             print('add')
@@ -407,8 +424,8 @@ def expandActions(SG, SG_goal):
     # find single root node stable subgraph & the root node is the successor of current exact same graph
     EISub = ExactIdenticalSubgraph(SG, SG_goal)
     CISub.remove_nodes_from(EISub)
-    #print(EISub.nodes())
-    #print(CISub.nodes())
+    print(EISub.nodes())
+    print(CISub.nodes())
     roots = [x for x in list(CISub.nodes()) if CISub.in_degree(x) == 0]
     for rnode in roots:
         pre_node = [x for x in list(EISub.nodes()) if rnode in list(SG_goal.graph.successors(x))]
