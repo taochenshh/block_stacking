@@ -6,7 +6,8 @@ SC = StabilityChecker(model_dir='./data/model')
 BKWorld = BlockWordEnv(env_file='./xmls/block_world.xml',
                        debug=False,
                        random_color=True,
-                       random_num=5)
+                       random_num=5,
+                       random_seed=1619)
 
 cuboid_0 = Block([0.1,0.02, 0.02], 'cuboid_0')
 cuboid_1 = Block([0.1,0.02, 0.02], 'cuboid_1')
@@ -48,8 +49,9 @@ cfgs = SG_start.ConfigList()
 BKWorld.reset()
 BKWorld.move_given_blocks(cfgs)
 BKWorld.step()
-BKWorld.render()
-time.sleep(2)
+start = time.time()
+while time.time() - start < 6:
+    BKWorld.render()
 
 for exe_action in reversed(exe_actions):
     bk_names = list(exe_action.keys())
@@ -57,6 +59,7 @@ for exe_action in reversed(exe_actions):
         BKWorld.move_blocks_for_demo(exe_action)
     else:
         BKWorld.move_block_for_demo(bk_names[0], exe_action[bk_names[0]])
+    time.sleep(1)
 
 while True:
     BKWorld.render()

@@ -1,5 +1,4 @@
 from representations import *
-import matplotlib.pyplot as plt
 import time
 import json
 
@@ -10,7 +9,8 @@ SC = StabilityChecker(model_dir='./data/model')
 BKWorld = BlockWordEnv(env_file='./xmls/block_world.xml',
                        debug=False,
                        random_color=False,
-                       random_num=5)
+                       random_num=5,
+                       random_seed=161)
 
 # shape : half
 cuboid_0 = Block([0.1,0.02, 0.02], 'cuboid_0')

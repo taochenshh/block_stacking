@@ -53,9 +53,6 @@ def test(model, device, test_loader, epoch=None, val=True):
 
     test_loss /= len(test_loader.dataset)
     acc = float(correct) / len(test_loader.dataset)
-    # print('\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(
-    #     test_loss, correct, len(test_loader.dataset),
-    #     100. * acc))
     if val:
         logger.logkv('epoch', epoch)
         logger.logkv('val/loss', test_loss)

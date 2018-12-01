@@ -15,7 +15,7 @@ def main():
     args = parser.parse_args()
     test_configs = [{'cube_0': [0, 0, 0.02],
                      'cuboid_0': [0., 0, 0.06],
-                     'cube_1': [0.08, 0, 0.14],
+                     # 'cube_1': [0.08, 0, 0.14],
                      'cube_2': [0.08, 0, 0.10],
                      'cube_3': [-0.08, 0, 0.10]},
                     {'cube_0': [-0.16, 0, 0.02],
@@ -30,7 +30,7 @@ def main():
                            random_color=False,
                            random_num=5)
     pred_right = []
-    test_num = 100
+    test_num = 1
     for i in range(test_num):
         BKWorld.reset()
         BKWorld.move_given_blocks(test_configs[test_id])

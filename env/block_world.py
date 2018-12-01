@@ -8,7 +8,7 @@ import time
 
 
 class BlockWordEnv:
-    def __init__(self, env_file, random_color=None, random_num=5, debug=False):
+    def __init__(self, env_file, random_color=None, random_num=5, debug=False, random_seed=0):
         self.env_file = env_file
         self.random_color = random_color
         self.random_num = random_num
@@ -29,7 +29,7 @@ class BlockWordEnv:
         self.pos_candidates = np.arange(self.center_bounds[0],
                                         self.center_bounds[1] + self.cube_size[0],
                                         self.cube_size[0])
-        self.modder = TextureModder(self.sim)
+        self.modder = TextureModder(self.sim, random_state=random_seed)
         self.cur_id = {'cube': 0,
                        'cuboid': 0}
         self.viewer = None
@@ -137,7 +137,7 @@ class BlockWordEnv:
         planned_path.append(prev_pose.copy())
         for i in range(up_steps):
             tmp_pose = planned_path[-1].copy()
-            tmp_pose[2] += (0.2 - prev_pose[2]) / float(up_steps)
+            tmp_pose[2] += (0.45 - prev_pose[2]) / float(up_steps)
             planned_path.append(tmp_pose.copy())
         for i in range(h_steps + 1):
             tmp_pose = planned_path[-1].copy()
@@ -146,7 +146,7 @@ class BlockWordEnv:
             planned_path.append(tmp_pose.copy())
         for i in range(down_steps):
             tmp_pose = planned_path[-1].copy()
-            tmp_pose[2] -= (0.2 - target_pos[2]) / float(down_steps)
+            tmp_pose[2] -= (0.45 - target_pos[2]) / float(down_steps)
             planned_path.append(tmp_pose.copy())
         post_pose[:3] = target_pos
         planned_path.append(post_pose.copy())
@@ -178,7 +178,7 @@ class BlockWordEnv:
         planned_delta_path.append(np.zeros_like(prev_pose))
         for i in range(up_steps):
             tmp_pose = planned_path[-1].copy()
-            tmp_pose[2] += (0.2 - prev_pose[2]) / float(up_steps)
+            tmp_pose[2] += (0.45 - prev_pose[2]) / float(up_steps)
             planned_delta_path.append(tmp_pose - planned_path[-1])
             planned_path.append(tmp_pose.copy())
         for i in range(h_steps + 1):
@@ -189,7 +189,7 @@ class BlockWordEnv:
             planned_path.append(tmp_pose.copy())
         for i in range(down_steps):
             tmp_pose = planned_path[-1].copy()
-            tmp_pose[2] -= (0.2 - target_pos[2]) / float(down_steps)
+            tmp_pose[2] -= (0.45 - target_pos[2]) / float(down_steps)
             planned_delta_path.append(tmp_pose - planned_path[-1])
             planned_path.append(tmp_pose.copy())
         post_pose[:3] = target_pos
