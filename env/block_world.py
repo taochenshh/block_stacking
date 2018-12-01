@@ -171,9 +171,9 @@ class BlockWordEnv:
         post_pose = prev_pose.copy()
         planned_delta_path = []
         planned_path = []
-        up_steps = 10
-        h_steps = 20
-        down_steps = 10
+        up_steps = 20
+        h_steps = 30
+        down_steps = 20
         planned_path.append(prev_pose.copy())
         planned_delta_path.append(np.zeros_like(prev_pose))
         for i in range(up_steps):
