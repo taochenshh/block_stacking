@@ -5,6 +5,8 @@ from stability_checker import StabilityChecker
 from env.block_world import BlockWordEnv
 import cv2
 
+random_position = [-0.25,0]
+
 class StateGraph:
     def __init__(self, root_node, SC, BKWorld):
         # root_nodes: root node at layer 0
@@ -393,8 +395,8 @@ def expandActions(SG, SG_goal):
 
     # set block on-table action
     for node in SG.manipulable_nodes():
-        position = [-0.15,0] # TODO randomly find a space on the table
-        cur_act = MoveTo([node, SG.root_node, position], SG)
+        random_position = [-0.25,0] # TODO randomly find a space on the table
+        cur_act = MoveTo([node, SG.root_node, random_position], SG)
         cur_act.show()
         if cur_act.ifeligible():
             print('add')
