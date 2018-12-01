@@ -41,12 +41,23 @@ class StateGraph:
         self.layers[n_index].remove(node)
         self.graph.remove_node(node)
 
+    def recomputeConfig(self):
+
+        for l in range(len(self.layers)-1):
+            for node in self.layers[l+1]:
+                pre_node = list(self.graph.predecessors(node))[0]
+                p_change = self.graph.edges[pre_node,node]['position'] + [pre_node.shape[2]+node.shape[2]]
+                self.graph.nodes[node]['abs_position'] = list(np.array(self.graph.nodes[pre_node]['abs_position']) + np.array(p_change))
+
+
     def ConfigList(self):
-        Clist = {x.name: self.graph.nodes[x]['abs_position'] for x in list(self.graph.nodes())
-                 if self.graph.nodes[x]['layer'] != 0}
+        p = np.array(self.graph.node[self.root_node]['abs_position']) - self.root_node.shape[2]
+        Clist = {x.name: list(np.array(self.graph.nodes[x]['abs_position'])-p) for x in list(self.graph.nodes())
+                 if x.name != 'TABLE'}
         return Clist
 
     def ifStable(self):
+
         blockConfigurations = self.ConfigList()
         self.BKWorld.reset()
         self.BKWorld.move_given_blocks(blockConfigurations)
@@ -54,7 +65,12 @@ class StateGraph:
         img = self.BKWorld.get_img()
         cv2.imwrite('test.png', img)
         label = self.BKWorld.check_stability(render=False)
+
+        print(blockConfigurations)
+        print(label)
         return label
+
+        #return True
 
     def ifCollide(self):
         return False
@@ -89,7 +105,7 @@ class StateGraph:
             layer_index = layer_index + 1
 
     def subgraph(self, nodes):
-        SSG = StateGraph(nodes[0])
+        SSG = StateGraph(nodes[0], SC=self.SC, BKWorld=self.BKWorld)
         SSG.graph = nx.DiGraph(nx.subgraph(self.graph, nodes))
         SSG.recomputeLayers()
         return SSG
@@ -177,6 +193,7 @@ class MoveSubTo(Action):
             pos_SG.graph.remove_edge(node, self.opt[0][0])
         pos_SG.graph.add_edges_from([(self.opt[1], self.opt[0][0], {'position': self.opt[2]})])
         pos_SG.recomputeLayers()
+        pos_SG.recomputeConfig()
         self.pos_state_graph = pos_SG
 
     def show(self):
@@ -278,8 +295,8 @@ def DFSearch(SG_start, SG_goal):
 
         # compare current node and goal
         EISub = ExactIdenticalSubgraph(cur_node, SG_goal)
+        #print(EISub.nodes())
         if EISub.number_of_nodes() == SG_goal.graph.number_of_nodes():
-
             GoalFound = True
             break
 
@@ -369,14 +386,18 @@ def expandActions(SG, SG_goal):
             continue
         for pnode in possible_nodes:
             cur_act = MoveTo([pnode, node, SG_goal.graph.edges[node, pnode]['position']], SG)
+            cur_act.show()
             if cur_act.ifeligible():
                 actions.append(cur_act)
+                print('add!')
 
     # set block on-table action
     for node in SG.manipulable_nodes():
-        position = [] # TODO randomly find a space on the table
+        position = [-0.15,0] # TODO randomly find a space on the table
         cur_act = MoveTo([node, SG.root_node, position], SG)
+        cur_act.show()
         if cur_act.ifeligible():
+            print('add')
             actions.append(cur_act)
 
     # try sub assembly
@@ -384,6 +405,8 @@ def expandActions(SG, SG_goal):
     # find single root node stable subgraph & the root node is the successor of current exact same graph
     EISub = ExactIdenticalSubgraph(SG, SG_goal)
     CISub.remove_nodes_from(EISub)
+    #print(EISub.nodes())
+    #print(CISub.nodes())
     roots = [x for x in list(CISub.nodes()) if CISub.in_degree(x) == 0]
     for rnode in roots:
         pre_node = [x for x in list(EISub.nodes()) if rnode in list(SG_goal.graph.successors(x))]
@@ -402,7 +425,9 @@ def expandActions(SG, SG_goal):
         subG = SG.subgraph(sub_closed)
         if subG.ifStable():
             cur_act = MoveSubTo([sub_closed, pre_node, SG_goal.graph.edges[pre_node, rnode]['position']], SG)
+            cur_act.show()
             if cur_act.ifeligible():
+                print('add')
                 actions.append(cur_act)
 
     return actions
