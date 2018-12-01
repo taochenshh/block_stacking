@@ -33,7 +33,7 @@ class StabilityChecker:
 
     def load_model(self, save_dir, model):
         ckpt_file = os.path.join(save_dir, 'model_best.pth')
-        ckpt = torch.load(ckpt_file)
+        ckpt = torch.load(ckpt_file, map_location=self.device)
         model_dict = model.state_dict()
         pretrained_dict = {k: v for k, v in ckpt['state_dict'].items() if k in model_dict}
         model_dict.update(pretrained_dict)
