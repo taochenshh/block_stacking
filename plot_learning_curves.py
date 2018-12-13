@@ -1,11 +1,15 @@
+'''
+Author: Tao Chen (CMU RI)
+Date: 11/25/2018
+'''
+import glob
+import os
+
 import matplotlib.pyplot as plt
-from matplotlib import rcParams
 import numpy as np
 import tensorflow as tf
-import sys
-import os
-import glob
-import copy
+from matplotlib import rcParams
+
 
 def main():
     FONT_SIZE = 22
@@ -62,6 +66,7 @@ def main():
     acc_fig.savefig('accuracy.pdf', format='pdf')
     loss_fig.savefig('loss.pdf', format='pdf')
     plt.show()
+
 
 if __name__ == '__main__':
     main()

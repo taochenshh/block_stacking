@@ -1,6 +1,6 @@
+import json
 import os
 from random import shuffle
-import json
 
 data_dir = '../data'
 img_folders = [d for d in os.listdir(data_dir) if os.path.isdir(os.path.join(data_dir, d))]

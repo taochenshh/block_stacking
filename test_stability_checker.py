@@ -1,8 +1,14 @@
-from stability_checker import StabilityChecker
-from env.block_world import BlockWordEnv
+'''
+Author: Tao Chen (CMU RI)
+Date: 11/25/2018
+'''
 import argparse
-import numpy as np
+
 import cv2
+import numpy as np
+
+from env.block_world import BlockWordEnv
+from stability_checker import StabilityChecker
 
 
 def main():

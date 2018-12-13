@@ -1,17 +1,22 @@
-import numpy as np
+'''
+Author: Tao Chen (CMU RI)
+Date: 11/25/2018
+'''
 import argparse
+import os
+import shutil
+
+import numpy as np
 import torch
 import torch.nn as nn
-import torch.optim as optim
-from torch.optim import lr_scheduler
 import torch.nn.functional as F
-from PIL import Image
-from torchvision import datasets, models, transforms
+import torch.optim as optim
 from torch.utils.data import Dataset
-import os
-from bk_dataset import BKDataset
+from torchvision import models, transforms
+
 import logger
-import shutil
+from bk_dataset import BKDataset
+
 
 def train(args, model, device, train_loader, optimizer, epoch):
     model.train()
@@ -24,13 +29,16 @@ def train(args, model, device, train_loader, optimizer, epoch):
         loss = F.cross_entropy(output, target, reduction='sum')
         loss.backward()
         optimizer.step()
-        pred = output.max(1, keepdim=True)[1]  # get the index of the max log-probability
+        # get the index of the max log-probability
+        pred = output.max(1, keepdim=True)[1]
+
+
         correct += pred.eq(target.view_as(pred)).sum().item()
         total_loss += loss.item()
         if batch_idx % args.log_interval == 0:
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
                 epoch, batch_idx * len(data), len(train_loader.dataset),
-                100. * batch_idx / len(train_loader), loss.item()))
+                       100. * batch_idx / len(train_loader), loss.item()))
     total_loss /= float(len(train_loader.dataset))
     acc = correct / float(len(train_loader.dataset))
     logger.logkv('epoch', epoch)
@@ -39,16 +47,19 @@ def train(args, model, device, train_loader, optimizer, epoch):
     logger.dumpkvs()
     return total_loss, acc
 
+
 def test(model, device, test_loader, epoch=None, val=True):
     model.eval()
     test_loss = 0
     correct = 0
     with torch.no_grad():
         for data, target in test_loader:
-            data, target = data.to(device).float(), target.to(device).long()
+            data, target = data.to(device).float(), \
+                           target.to(device).long()
             output = model(data)
-            test_loss += F.cross_entropy(output, target, reduction='sum').item() # sum up batch loss
-            pred = output.max(1, keepdim=True)[1] # get the index of the max log-probability
+            test_loss += F.cross_entropy(output, target,
+                                         reduction='sum').item()  # sum up batch loss
+            pred = output.max(1, keepdim=True)[1]  # get the index of the max log-probability
             correct += pred.eq(target.view_as(pred)).sum().item()
 
     test_loss /= len(test_loader.dataset)
@@ -77,6 +88,7 @@ def load_model(save_dir, model, device):
     pretrained_dict = {k: v for k, v in ckpt['state_dict'].items() if k in model_dict}
     model_dict.update(pretrained_dict)
     model.load_state_dict(model_dict)
+
 
 def main():
     parser = argparse.ArgumentParser(description='PyTorch MNIST Example')
@@ -160,11 +172,14 @@ def main():
         print('Test accuracy:', test_acc)
         print('Test loss:', test_loss)
     else:
-        optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+        optimizer = optim.Adam(model.parameters(), lr=args.lr,
+                               weight_decay=args.weight_decay)
         best_acc = -np.inf
         for epoch in range(1, args.epochs + 1):
-            train_loss, train_acc = train(args, model, device, train_loader, optimizer, epoch)
-            test_loss, test_acc = test(model, device, val_loader, epoch, val=True)
+            train_loss, train_acc = train(args, model, device,
+                                          train_loader, optimizer, epoch)
+            test_loss, test_acc = test(model, device, val_loader,
+                                       epoch, val=True)
             if epoch % args.save_interval == 0:
                 is_best = False
                 if test_acc > best_acc:

@@ -1,7 +1,11 @@
+'''
+Author: Tao Chen (CMU RI)
+Date: 11/25/2018
+'''
 import numpy as np
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
 from sklearn import svm
+from sklearn.model_selection import train_test_split
+
 
 def main():
     seed = 0
@@ -9,10 +13,14 @@ def main():
     data = np.load('features.npz')
     features = data['features']
     labels = data['labels']
-    X_train, X_test, y_train, y_test = train_test_split(features, labels,
-                                                        test_size=0.2, random_state=seed)
-    # X_val, X_test, y_val, y_test = train_test_split(X_test, y_test,
-    #                                                 test_size=0.5, random_state=seed)
+    X_train, X_test, y_train, y_test = train_test_split(features,
+                                                        labels,
+                                                        test_size=0.2,
+                                                        random_state=seed)
+    # X_val, X_test, y_val, y_test = train_test_split(X_test,
+    #                                                 y_test,
+    #                                                 test_size=0.5,
+    #                                                 random_state=seed)
 
     # # logistic regression
     # logreg = LogisticRegression(C=1, solver='sag')
@@ -27,6 +35,7 @@ def main():
     score = clf.score(X_test, y_test)
     print('svm accuracy on test:', score)
     # accuracy = 0.926
+
 
 if __name__ == '__main__':
     main()

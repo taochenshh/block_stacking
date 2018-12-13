@@ -1,5 +1,4 @@
 from mujoco_py import load_model_from_path, MjSim, MjViewer
-import numpy as np
 
 env_file = 'block_world.xml'
 model = load_model_from_path(env_file)

@@ -1,7 +1,6 @@
-from mujoco_py import load_model_from_path, MjSim, MjViewer
 import numpy as np
+from mujoco_py import load_model_from_path, MjSim, MjViewer
 from mujoco_py.modder import TextureModder
-import time
 
 env_file = 'block_world.xml'
 model = load_model_from_path(env_file)

@@ -1,14 +1,17 @@
-import numpy as np
 import argparse
+import os
+
+import numpy as np
 import torch
 import torch.nn as nn
 from torchvision import models, transforms
-import os
 
 
 class StabilityChecker:
     def __init__(self, model_dir):
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = torch.device("cuda"
+                                   if torch.cuda.is_available()
+                                   else "cpu")
         self.model_dir = model_dir
         model_ft = models.resnet18(pretrained=True)
         num_ftrs = model_ft.fc.in_features
@@ -18,7 +21,8 @@ class StabilityChecker:
         self.load_model(model_dir, self.model)
         self.transform = transforms.Compose([
             transforms.ToTensor(),
-            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+            transforms.Normalize([0.485, 0.456, 0.406],
+                                 [0.229, 0.224, 0.225])
         ])
 
     def eval(self, image):
@@ -35,7 +39,9 @@ class StabilityChecker:
         ckpt_file = os.path.join(save_dir, 'model_best.pth')
         ckpt = torch.load(ckpt_file, map_location=self.device)
         model_dict = model.state_dict()
-        pretrained_dict = {k: v for k, v in ckpt['state_dict'].items() if k in model_dict}
+        pretrained_dict = {k: v
+                           for k, v in ckpt['state_dict'].items()
+                           if k in model_dict}
         model_dict.update(pretrained_dict)
         model.load_state_dict(model_dict)
 

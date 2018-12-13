@@ -1,14 +1,22 @@
+'''
+Author: Tao Chen (CMU RI)
+Date: 11/25/2018
+'''
+
+import json
+import os
+
 from PIL import Image
 from torch.utils.data import Dataset
-import os
-import json
+
 
 class BKDataset(Dataset):
     def __init__(self, mode, transform=None):
         self.data_dir = '../data'
         with open('data_split.json', 'r') as f:
             split_idx = json.load(f)
-        self.img_folders = [os.path.join(self.data_dir, folder) for folder in split_idx[mode]]
+        self.img_folders = [os.path.join(self.data_dir, folder)
+                            for folder in split_idx[mode]]
         self.transform = transform
 
     def __len__(self):

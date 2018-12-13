@@ -67,69 +67,131 @@
         <texture builtin="flat" height="32" name="cuboid_29_tex" rgb1="1 1 1" type="cube" width="32"/>
 
 
-        <material name="table_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="table_tex"/>
+        <material name="table_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="table_tex"/>
         <material name="cube_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_tex"/>
-        <material name="cuboid_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_tex"/>
-        <material name="cube_0_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_0_tex"/>
-        <material name="cuboid_0_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_0_tex"/>
-        <material name="cube_1_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_1_tex"/>
-        <material name="cuboid_1_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_1_tex"/>
-        <material name="cube_2_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_2_tex"/>
-        <material name="cuboid_2_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_2_tex"/>
-        <material name="cube_3_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_3_tex"/>
-        <material name="cuboid_3_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_3_tex"/>
-        <material name="cube_4_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_4_tex"/>
-        <material name="cuboid_4_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_4_tex"/>
-        <material name="cube_5_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_5_tex"/>
-        <material name="cuboid_5_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_5_tex"/>
-        <material name="cube_6_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_6_tex"/>
-        <material name="cuboid_6_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_6_tex"/>
-        <material name="cube_7_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_7_tex"/>
-        <material name="cuboid_7_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_7_tex"/>
-        <material name="cube_8_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_8_tex"/>
-        <material name="cuboid_8_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_8_tex"/>
-        <material name="cube_9_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_9_tex"/>
-        <material name="cuboid_9_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_9_tex"/>
-        <material name="cube_10_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_10_tex"/>
-        <material name="cuboid_10_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_10_tex"/>
-        <material name="cube_11_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_11_tex"/>
-        <material name="cuboid_11_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_11_tex"/>
-        <material name="cube_12_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_12_tex"/>
-        <material name="cuboid_12_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_12_tex"/>
-        <material name="cube_13_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_13_tex"/>
-        <material name="cuboid_13_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_13_tex"/>
-        <material name="cube_14_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_14_tex"/>
-        <material name="cuboid_14_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_14_tex"/>
-        <material name="cube_15_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_15_tex"/>
-        <material name="cuboid_15_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_15_tex"/>
-        <material name="cube_16_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_16_tex"/>
-        <material name="cuboid_16_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_16_tex"/>
-        <material name="cube_17_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_17_tex"/>
-        <material name="cuboid_17_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_17_tex"/>
-        <material name="cube_18_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_18_tex"/>
-        <material name="cuboid_18_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_18_tex"/>
-        <material name="cube_19_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_19_tex"/>
-        <material name="cuboid_19_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_19_tex"/>
-        <material name="cube_20_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_20_tex"/>
-        <material name="cuboid_20_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_20_tex"/>
-        <material name="cube_21_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_21_tex"/>
-        <material name="cuboid_21_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_21_tex"/>
-        <material name="cube_22_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_22_tex"/>
-        <material name="cuboid_22_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_22_tex"/>
-        <material name="cube_23_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_23_tex"/>
-        <material name="cuboid_23_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_23_tex"/>
-        <material name="cube_24_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_24_tex"/>
-        <material name="cuboid_24_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_24_tex"/>
-        <material name="cube_25_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_25_tex"/>
-        <material name="cuboid_25_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_25_tex"/>
-        <material name="cube_26_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_26_tex"/>
-        <material name="cuboid_26_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_26_tex"/>
-        <material name="cube_27_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_27_tex"/>
-        <material name="cuboid_27_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_27_tex"/>
-        <material name="cube_28_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_28_tex"/>
-        <material name="cuboid_28_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_28_tex"/>
-        <material name="cube_29_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cube_29_tex"/>
-        <material name="cuboid_29_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="cuboid_29_tex"/>
+        <material name="cuboid_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_tex"/>
+        <material name="cube_0_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_0_tex"/>
+        <material name="cuboid_0_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_0_tex"/>
+        <material name="cube_1_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_1_tex"/>
+        <material name="cuboid_1_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_1_tex"/>
+        <material name="cube_2_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_2_tex"/>
+        <material name="cuboid_2_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_2_tex"/>
+        <material name="cube_3_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_3_tex"/>
+        <material name="cuboid_3_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_3_tex"/>
+        <material name="cube_4_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_4_tex"/>
+        <material name="cuboid_4_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_4_tex"/>
+        <material name="cube_5_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_5_tex"/>
+        <material name="cuboid_5_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_5_tex"/>
+        <material name="cube_6_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_6_tex"/>
+        <material name="cuboid_6_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_6_tex"/>
+        <material name="cube_7_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_7_tex"/>
+        <material name="cuboid_7_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_7_tex"/>
+        <material name="cube_8_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_8_tex"/>
+        <material name="cuboid_8_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_8_tex"/>
+        <material name="cube_9_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_9_tex"/>
+        <material name="cuboid_9_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_9_tex"/>
+        <material name="cube_10_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_10_tex"/>
+        <material name="cuboid_10_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_10_tex"/>
+        <material name="cube_11_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_11_tex"/>
+        <material name="cuboid_11_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_11_tex"/>
+        <material name="cube_12_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_12_tex"/>
+        <material name="cuboid_12_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_12_tex"/>
+        <material name="cube_13_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_13_tex"/>
+        <material name="cuboid_13_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_13_tex"/>
+        <material name="cube_14_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_14_tex"/>
+        <material name="cuboid_14_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_14_tex"/>
+        <material name="cube_15_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_15_tex"/>
+        <material name="cuboid_15_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_15_tex"/>
+        <material name="cube_16_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_16_tex"/>
+        <material name="cuboid_16_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_16_tex"/>
+        <material name="cube_17_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_17_tex"/>
+        <material name="cuboid_17_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_17_tex"/>
+        <material name="cube_18_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_18_tex"/>
+        <material name="cuboid_18_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_18_tex"/>
+        <material name="cube_19_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_19_tex"/>
+        <material name="cuboid_19_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_19_tex"/>
+        <material name="cube_20_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_20_tex"/>
+        <material name="cuboid_20_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_20_tex"/>
+        <material name="cube_21_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_21_tex"/>
+        <material name="cuboid_21_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_21_tex"/>
+        <material name="cube_22_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_22_tex"/>
+        <material name="cuboid_22_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_22_tex"/>
+        <material name="cube_23_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_23_tex"/>
+        <material name="cuboid_23_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_23_tex"/>
+        <material name="cube_24_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_24_tex"/>
+        <material name="cuboid_24_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_24_tex"/>
+        <material name="cube_25_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_25_tex"/>
+        <material name="cuboid_25_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_25_tex"/>
+        <material name="cube_26_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_26_tex"/>
+        <material name="cuboid_26_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_26_tex"/>
+        <material name="cube_27_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_27_tex"/>
+        <material name="cuboid_27_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_27_tex"/>
+        <material name="cube_28_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_28_tex"/>
+        <material name="cuboid_28_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_28_tex"/>
+        <material name="cube_29_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cube_29_tex"/>
+        <material name="cuboid_29_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"
+                  texture="cuboid_29_tex"/>
     </asset>
 
     <default>

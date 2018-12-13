@@ -1,10 +1,10 @@
+import json
+import time
+
+import cv2
+import numpy as np
 from mujoco_py import load_model_from_path, MjSim, MjViewer
 from mujoco_py.modder import TextureModder
-import numpy as np
-import cv2
-import json
-import os
-import time
 
 
 class BlockWordEnv:
@@ -25,7 +25,7 @@ class BlockWordEnv:
             print('total cube num:', self.cube_num)
             print('total cuboid num:', self.cuboid_num)
         self.max_num_per_type = max(self.cube_num, self.cuboid_num)
-        self.center_bounds = [-0.25, 0.25]#[0, self.cuboid_size[0] * self.max_num_per_type]
+        self.center_bounds = [-0.25, 0.25]  # [0, self.cuboid_size[0] * self.max_num_per_type]
         self.pos_candidates = np.arange(self.center_bounds[0],
                                         self.center_bounds[1] + self.cube_size[0],
                                         self.cube_size[0])
@@ -207,7 +207,6 @@ class BlockWordEnv:
         if self.debug:
             print('{0:s} pose after moving:'.format(name), self.sim.data.get_joint_qpos(name))
 
-
     def move_block(self, target_pos, bk_type='cube'):
         # center bounds: [0, 0.1 * 30]
         assert bk_type == 'cube' or bk_type == 'cuboid'
@@ -362,12 +361,6 @@ def main():
     #     BKWorld.step()
     #     BKWorld.render()
 
+
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-

@@ -1,8 +1,14 @@
-from env.block_world import BlockWordEnv
+'''
+Author: Tao Chen (CMU RI)
+Date: 11/25/2018
+'''
 import argparse
-import numpy as np
-import cv2
 import time
+
+import numpy as np
+
+from env.block_world import BlockWordEnv
+
 
 def main():
     np.set_printoptions(precision=4, suppress=True)
@@ -36,6 +42,7 @@ def main():
     while True:
         BKWorld.step()
         BKWorld.render()
+
 
 if __name__ == '__main__':
     main()

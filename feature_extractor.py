@@ -1,18 +1,17 @@
-import numpy as np
+'''
+Author: Tao Chen (CMU RI)
+Date: 11/25/2018
+'''
 import argparse
+
+import numpy as np
 import torch
 import torch.nn as nn
-import torch.optim as optim
-from torch.optim import lr_scheduler
-import torch.nn.functional as F
-from PIL import Image
-from torchvision import datasets, models, transforms
-from torch.utils.data import Dataset
-import os
-from bk_dataset import BKDataset
-import logger
-import shutil
+from torchvision import models, transforms
 from tqdm import tqdm
+
+from bk_dataset import BKDataset
+
 
 def main():
     parser = argparse.ArgumentParser(description='PyTorch MNIST Example')
@@ -75,6 +74,7 @@ def main():
     image_features = np.concatenate(image_features, axis=0)
     image_labels = np.concatenate(image_labels, axis=0)
     np.savez('features.npz', features=image_features, labels=image_labels)
+
 
 if __name__ == '__main__':
     main()
