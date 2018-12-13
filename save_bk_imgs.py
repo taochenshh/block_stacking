@@ -35,6 +35,7 @@ def main():
             save_folder = os.path.join(args.save_dir,
                                        '{0:08d}'.format(folder_idx))
             os.makedirs(save_folder, exist_ok=True)
+            img = img[:, :, ::-1]
             cv2.imwrite(os.path.join(save_folder, 'img.png'), img)
             # cv2.imwrite(os.path.join(save_folder, 'img_flip.png'),
             #             img[:, ::-1])

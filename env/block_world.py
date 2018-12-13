@@ -112,8 +112,6 @@ class BlockWordEnv:
 
     def move_given_block(self, name, target_pos):
         prev_pose = self.sim.data.get_joint_qpos(name)
-        # if self.debug:
-        #     print('{0:s}_{1:d} pose before moving:'.format(bk_type, self.cur_id[bk_type]), prev_pose)
         post_pose = prev_pose.copy()
         post_pose[:3] = target_pos
         self.sim.data.set_joint_qpos(name, post_pose)
@@ -205,35 +203,32 @@ class BlockWordEnv:
             self.render()
         self.active_blocks.append(name)
         if self.debug:
-            print('{0:s} pose after moving:'.format(name), self.sim.data.get_joint_qpos(name))
+            print('{0:s} pose after moving:'.format(name),
+                  self.sim.data.get_joint_qpos(name))
 
     def move_block(self, target_pos, bk_type='cube'):
         # center bounds: [0, 0.1 * 30]
         assert bk_type == 'cube' or bk_type == 'cuboid'
         bk_name = '{0:s}_{1:d}'.format(bk_type, self.cur_id[bk_type])
         prev_pose = self.sim.data.get_joint_qpos(bk_name)
-        # if self.debug:
-        #     print('{0:s}_{1:d} pose before moving:'.format(bk_type, self.cur_id[bk_type]), prev_pose)
         post_pose = prev_pose.copy()
         post_pose[:3] = target_pos
 
         self.sim.data.set_joint_qpos(bk_name, post_pose)
         self.active_blocks.append(bk_name)
         if self.debug:
-            print('{0:s}_{1:d} pose after moving:'.format(bk_type, self.cur_id[bk_type]), post_pose)
+            print('{0:s}_{1:d} pose after moving:'.format(bk_type,
+                                                          self.cur_id[bk_type]),
+                  post_pose)
         self.cur_id[bk_type] += 1
 
     def get_img(self):
         # return self.get_img_demo()
-        img = self.sim.render(camera_name='camera', width=600, height=600, depth=False)
+        img = self.sim.render(camera_name='camera', width=600,
+                              height=600, depth=False)
         img = np.flipud(img)
-        img = img[:, :, ::-1]
-        resized_img = cv2.resize(img[0:500, 50:550], (224, 224), cv2.INTER_AREA)
-        # resized_img = cv2.resize(img, (224, 224), cv2.INTER_AREA)
-        # cv2.imwrite('test_cut.png', img[0:500, 50:550])
-        # cv2.imwrite('test.png', img)
-        # cv2.imwrite('test_resize.png', resized_img)
-        # cv2.imwrite('test_resize_lr_flip.png', resized_img[:, ::-1, :])
+        resized_img = cv2.resize(img[0:500, 50:550],
+                                 (224, 224), cv2.INTER_AREA)
         return resized_img
 
     def get_img_demo(self):
@@ -253,7 +248,6 @@ class BlockWordEnv:
             layer_num += 1
 
     def gen_ran_bk_configs(self, render=False):
-        # prob = np.exp(-0.1 * np.arange(30))
         while True:
             cuboid_num = np.random.choice(5, 1)[0]
             cube_num = np.random.choice(15, 1)[0]
@@ -276,7 +270,8 @@ class BlockWordEnv:
                 continue
             else:
                 bk_lower_limit = cur_x + bk_size[0]
-                pos_candidates = self.pos_candidates[self.pos_candidates >= bk_lower_limit]
+                pos_candidates = self.pos_candidates[self.pos_candidates
+                                                     >= bk_lower_limit]
                 x = np.random.choice(pos_candidates, 1)[0]
                 cur_x = x + bk_size[0]
                 target_pos = np.array([x, y, z])
@@ -309,18 +304,21 @@ class BlockWordEnv:
             z = (2 * layer_num - 1) * self.cube_size[2]
             y = 0
             bk_lower_limit = cur_x + bk_size[0]
-            pos_candidates = layer_pos_candidates[layer_pos_candidates >= bk_lower_limit]
+            pos_candidates = layer_pos_candidates[layer_pos_candidates
+                                                  >= bk_lower_limit]
             if pos_candidates.size < 1:
                 layer_num += 1
                 cur_x = self.center_bounds[0]
                 layer_pos_candidates = self.pos_candidates.copy()
                 good_ids = np.zeros_like(layer_pos_candidates, dtype=bool)
                 for seg in filled_segs:
-                    good_ids = np.logical_or(good_ids, np.logical_and(layer_pos_candidates >= seg[0],
-                                                                      layer_pos_candidates <= seg[1]))
+                    good_ids = np.logical_or(good_ids,
+                                             np.logical_and(layer_pos_candidates >= seg[0],
+                                                            layer_pos_candidates <= seg[1]))
                 layer_pos_candidates = layer_pos_candidates[good_ids]
                 if self.debug:
-                    print('Layer [{0:d}] pos candidates num: {1:d}'.format(layer_num, layer_pos_candidates.size))
+                    print('Layer [{0:d}] pos candidates num: {1:d}'.format(layer_num,
+                                                                           layer_pos_candidates.size))
                 if layer_pos_candidates.size < 1:
                     break
                 filled_segs = []

@@ -68,9 +68,8 @@ class StateGraph:
         self.BKWorld.move_given_blocks(blockConfigurations)
         self.BKWorld.step()
         img = self.BKWorld.get_img()
-        cv2.imwrite('test.png', img)
+        cv2.imwrite('test.png', img[:, :, ::-1])
         # label = self.BKWorld.check_stability(render=False)
-        img = img[:, :, ::-1]
         label = self.SC.eval(img)
         print(blockConfigurations)
         print(label)

@@ -1,4 +1,5 @@
-# manip_project
+# Robot Construction via Planning and Learning
+
 
 ## Install Mujoco
 1. Download mjpro150 linux here: https://www.roboti.us/index.html
@@ -13,11 +14,18 @@
 1. `python setup.py install`
 1. `python examples/body_interaction.py`
 
-## Note
-* Download the pretrained model [here](https://drive.google.com/open?id=1xurmHxqXELoq_sVHizUQyOIYHhdica1U), 
-[here for cpu version](https://drive.google.com/open?id=1ooULbK_KEsVeeMG3rksoV005rt07hmkM),
-[here for larger range [-0.25, 0.25]](https://drive.google.com/open?id=1zr0nRnMM1W9QGT9xF5GrHUwG_xcdgHbX)
-
+## Note:
 
 * If you wanna use `viewer.render`, you need to set `LD_PRELOAD` to `/usr/lib/x86_64-linux-gnu/libGLEW.so:/usr/lib/nvidia-384/libGL.so`.
 However, if you wanna use `sim.render`, you need to unset it (`unset LD_PRELOAD`).
+
+## Usage:
+```bash
+python save_bk_imgs.py
+python split_train_test.py
+python train_stability_checker.py
+python test_stability_checker.py
+python tests/test.py
+python tests/test_vis.py
+```
+
